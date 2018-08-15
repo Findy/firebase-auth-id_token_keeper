@@ -7,8 +7,6 @@ module Firebase
       class IDToken
         attr_accessor :encoded_jwt
 
-        FIREBASE_PROJECT_ID = 'findy-id'
-        FIREBAES_ISSUER_URI = "https://securetoken.google.com/#{FIREBASE_PROJECT_ID}"
         FIREBASE_ALGORITHM = 'RS256'
 
         def initialize(encoded_jwt)
@@ -43,10 +41,10 @@ module Firebase
           raise 'Invalid iat in payload.' if Time.now.to_i < jwt_payload['iat']
 
           # Audience must be match Firebase project ID.
-          raise 'Invalid aud in payload.' if jwt_payload['aud'] != FIREBASE_PROJECT_ID
+          raise 'Invalid aud in payload.' if jwt_payload['aud'] != IDTokenKeeper.config.firebase_project_id
 
           # Issuer must be match Firebase issuer URI.
-          raise 'Invalid iss in payload.' if jwt_payload['iss'] != FIREBAES_ISSUER_URI
+          raise 'Invalid iss in payload.' if jwt_payload['iss'] != FIREBASE_ISSUER_URI
 
           # Subject must be a non-empty string.
           raise 'Invalid sub in payload.' if jwt_payload['sub'].strip.empty?
@@ -83,6 +81,12 @@ module Firebase
 
         def jwt_payload
           decoded_jwt[0]
+        end
+
+        private
+
+        def firebase_issuer_uri
+          "https://securetoken.google.com/#{IDTokenKeeper.config.firebase_project_id}"
         end
       end
     end
