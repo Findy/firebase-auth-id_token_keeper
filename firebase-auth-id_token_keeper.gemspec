@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Rui Onodera']
   spec.email         = ['deraru@gmail.com']
 
-  spec.summary       = 'Verify Firebase ID Token which obtained at client side.'
-  spec.description   = 'Verify Firebase ID Token which obtained at client side.'
+  spec.summary       = 'Verify the Firebase ID Token which obtained at the client side.'
+  spec.description   = 'Firebase Authentication uses ID Token. This gem verify the token on the server side.'
   spec.homepage      = 'https://github.com/Findy/firebase-auth-id_token_keeper'
   spec.license       = 'MIT'
 

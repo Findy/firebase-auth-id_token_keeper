@@ -44,7 +44,7 @@ module Firebase
           raise 'Invalid aud in payload.' if jwt_payload['aud'] != IDTokenKeeper.config.firebase_project_id
 
           # Issuer must be match Firebase issuer URI.
-          raise 'Invalid iss in payload.' if jwt_payload['iss'] != FIREBASE_ISSUER_URI
+          raise 'Invalid iss in payload.' if jwt_payload['iss'] != firebase_issuer_uri
 
           # Subject must be a non-empty string.
           raise 'Invalid sub in payload.' if jwt_payload['sub'].strip.empty?
