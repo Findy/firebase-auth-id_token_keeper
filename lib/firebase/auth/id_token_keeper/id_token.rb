@@ -73,6 +73,8 @@ module Firebase
 
         def decoded_jwt
           @decoded_jwt ||= JWT.decode(encoded_jwt, nil, false, { algorithm: FIREBASE_ALGORITHM })
+        rescue JWT::DecodeError => e
+          raise 'Invalid JWT format.'
         end
 
         def jwt_header

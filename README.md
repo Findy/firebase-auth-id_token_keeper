@@ -16,7 +16,10 @@
     - code: 401
     - message: "Signature has expired."
     - You should refresh your token on the client side.
-
+- `JWT::DecodeError`
+    - code: 401
+    - message: "Invalid JWT format."
+    - You should send JWT with valid format.
 
 
 ## Installation
