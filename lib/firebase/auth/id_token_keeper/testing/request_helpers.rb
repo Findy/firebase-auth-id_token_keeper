@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'firebase/auth/id_token_keeper/testing'
+
 module Firebase
   module Auth
     module IDTokenKeeper
