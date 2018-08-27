@@ -70,7 +70,7 @@ Make a support file `spec/support/firebase_auth_id_token_keeper.rb` which contai
 
 ```ruby
 RSpec.configure do |config|
-  config.include Firebase::Auth::IDTokenKeeper::Test::Helpers, type: :request
+  config.include Firebase::Auth::IDTokenKeeper::Testing::Helpers, type: :request
 end
 ```
 
