@@ -69,6 +69,8 @@ Firebase::Auth::IDTokenKeeper::Testing.decode_test_id_token(encoded_jwt)
 Make a support file `spec/support/firebase_auth_id_token_keeper.rb` which contains following code.
 
 ```ruby
+require 'firebase/auth/id_token_keeper/testing/request_helpers'
+
 RSpec.configure do |config|
   config.include Firebase::Auth::IDTokenKeeper::Testing::RequestHelpers, type: :request
 end
