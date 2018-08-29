@@ -36,16 +36,16 @@ decoded_jwt = {
   "aud"=>"project-id",
   "auth_time"=>1535353624,
   "user_id"=>"badcd9971aa1ba6a46bf3379db78",
-  "sub"=>"teyOh0wMQyZQboYCW18wammaFkH2",
+  "sub"=>"badcd9971aa1ba6a46bf3379db78",
   "iat"=>1535353624,
-  "exp"=>1535357224,
+  "exp"=>2000000000,
   "email"=>"test.example@example.com",
   "email_verified"=>false,
   "firebase"=>{"identities"=>{"github.com"=>["xxxxxx"], "email"=>["test.example@example.com"]}, "sign_in_provider"=>"github.com"}
 }
 
 encoded_jwt = Firebase::Auth::IDTokenKeeper::Testing.generate_test_id_token(decoded_jwt)
-# => "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tL3Byb2plY3QtaWQiLCJuYW1lIjoiVGVzdCBFeGFtcGxlIiwicGljdHVyZSI6Imh0dHBzOi8vZXhhbXBsZS5jb20iLCJhdWQiOiJwcm9qZWN0LWlkIiwiYXV0aF90aW1lIjoxNTM1MzUzNjI0LCJ1c2VyX2lkIjoiYmFkY2Q5OTcxYWExYmE2YTQ2YmYzMzc5ZGI3OCIsInN1YiI6InRleU9oMHdNUXlaUWJvWUNXMTh3YW1tYUZrSDIiLCJpYXQiOjE1MzUzNTM2MjQsImV4cCI6MTUzNTM1NzIyNCwiZW1haWwiOiJ0ZXN0LmV4YW1wbGVAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZ2l0aHViLmNvbSI6WyJ4eHh4eHgiXSwiZW1haWwiOlsidGVzdC5leGFtcGxlQGV4YW1wbGUuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ2l0aHViLmNvbSJ9fQ."
+# => "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tL3Byb2plY3QtaWQiLCJuYW1lIjoiVGVzdCBFeGFtcGxlIiwicGljdHVyZSI6Imh0dHBzOi8vZXhhbXBsZS5jb20iLCJhdWQiOiJwcm9qZWN0LWlkIiwiYXV0aF90aW1lIjoxNTM1MzUzNjI0LCJ1c2VyX2lkIjoiYmFkY2Q5OTcxYWExYmE2YTQ2YmYzMzc5ZGI3OCIsInN1YiI6ImJhZGNkOTk3MWFhMWJhNmE0NmJmMzM3OWRiNzgiLCJpYXQiOjE1MzUzNTM2MjQsImV4cCI6MjAwMDAwMDAwMCwiZW1haWwiOiJ0ZXN0LmV4YW1wbGVAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZ2l0aHViLmNvbSI6WyJ4eHh4eHgiXSwiZW1haWwiOlsidGVzdC5leGFtcGxlQGV4YW1wbGUuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ2l0aHViLmNvbSJ9fQ."
 
 Firebase::Auth::IDTokenKeeper::Testing.decode_test_id_token(encoded_jwt)
 # => {
@@ -55,9 +55,9 @@ Firebase::Auth::IDTokenKeeper::Testing.decode_test_id_token(encoded_jwt)
 #      "aud"=>"project-id",
 #      "auth_time"=>1535353624,
 #      "user_id"=>"badcd9971aa1ba6a46bf3379db78",
-#      "sub"=>"teyOh0wMQyZQboYCW18wammaFkH2",
+#      "sub"=>"badcd9971aa1ba6a46bf3379db78",
 #      "iat"=>1535353624,
-#      "exp"=>1535357224,
+#      "exp"=>2000000000,
 #      "email"=>"test.example@example.com",
 #      "email_verified"=>false,
 #      "firebase"=>{"identities"=>{"github.com"=>["xxxxxx"], "email"=>["test.example@example.com"]}, "sign_in_provider"=>"github.com"}
