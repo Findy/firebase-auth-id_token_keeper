@@ -1,5 +1,82 @@
 # Firebase::Auth::IDTokenKeeper
 
+## Description
+
+firebase-auth-id_token_keeper provides various functions such as verification of jwt published by [firebase authorication](https://firebase.google.com/docs/auth).
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'firebase-auth-id_token_keeper'
+```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install firebase-auth-id_token_keeper
+
+## Prerequisites
+
+You need to set firebase projrct info
+
+For example:
+
+```ruby
+Firebase::Auth::IDTokenKeeper.configure do |config|
+  config.firebase_project_id = 'firebase_project_id'
+end
+```
+
+For more information about Firebase project-id, please see below.
+
+https://firebase.google.com/docs/projects/learn-more?hl=en#project-id
+
+## Usage
+
+When you receive the request header follows:
+
+```
+"Authorization: Bearer [firebase_published_jwt]”
+```
+
+Should be added ApplicationController as follows:
+
+```ruby
+# frozen_string_literal: true
+
+class ApplicationController < V2::ApplicationController
+  protect_from_forgery
+
+  class NoAuthorizationHeaderError < StandardError; end
+  class NoJWTError < StandardError; end
+
+  protected
+
+  def verified_id_token
+    id_token.verified_id_token
+  end
+
+  def id_token
+    Firebase::Auth::IDTokenKeeper::IDToken.new(jwt)
+  end
+
+  def jwt
+    authorization_header.to_s.split(' ')[1].presence || raise(NoJWTError)
+  end
+
+  def authorization_header
+    request.headers['Authorization'].presence || raise(NoAuthorizationHeaderError)
+  end
+end
+```
+
+By doing so, You can use `verified_id_token` on all Controllers that inherit this ApplicationController
+
 ## Errors
 
 ### Response body
@@ -86,26 +163,6 @@ require 'support/firebase_auth_id_token_keeper'
 ```
 
 Now, we can decode test ID Token which is generated via `Firebase::Auth::IDTokenKeeper::Testing.generate_test_id_token` method in `Firebase::Auth::IDTokenKeeper::IDToken#verified_id_token` method.
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'firebase-auth-id_token_keeper'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install firebase-auth-id_token_keeper
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
