@@ -20,7 +20,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jwt (2.1.0)
     minitest (5.14.1)
-    rake (10.5.0)
+    rake (13.0.1)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
@@ -45,7 +45,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.16)
   firebase-auth-id_token_keeper!
-  rake (~> 10.0)
+  rake (~> 13.0)
   rspec (~> 3.0)
 
 BUNDLED WITH
