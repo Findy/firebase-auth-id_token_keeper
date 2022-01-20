@@ -38,7 +38,7 @@ module Firebase
         end
 
         def response
-          @response ||= open(PUBLIC_KEYS_URI)
+          @response ||= URI.open(PUBLIC_KEYS_URI)
         end
       end
     end
